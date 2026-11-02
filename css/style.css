@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Portfolio - Andria Bukia
+   Theme Color Palette & Custom Stylesheet
+   ========================================================================== */
+
+/* CSS Variables for Exact Color Palette */
+:root {
+    --primary: #00F0FF;          /* Vibrant Cyan */
+    --secondary: #10B981;        /* Emerald Green */
+    --tertiary: #6366F1;         /* Indigo Accent */
+    --neutral: #0B0F17;          /* Deep Navy Dark Background */
+    --neutral-darker: #070a10;
+    --neutral-card: #111827;
+    --neutral-surface: #0f172a;
+    --neutral-border: #1e293b;
+    --neutral-input: #151d2f;
+    --neutral-textMuted: #94a3b8;
+}
+
+/* Base Typography & Background */
+body {
+    font-family: 'Fira GO', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--neutral);
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Ambient Glow Background Effect */
+.ambient-glow {
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(99, 102, 241, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00F0FF;
+}
+
+/* Palette Utility Classes */
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.border-primary {
+    border-color: var(--primary);
+}
+
+.border-primary\/30 {
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.border-primary\/40 {
+    border-color: rgba(0, 240, 255, 0.4);
+}
+
+.border-primary\/50 {
+    border-color: rgba(0, 240, 255, 0.5);
+}
+
+.bg-primary\/10 {
+    background-color: rgba(0, 240, 255, 0.1);
+}
+
+.bg-primary\/15 {
+    background-color: rgba(0, 240, 255, 0.15);
+}
+
+.bg-primary\/30 {
+    background-color: rgba(0, 240, 255, 0.3);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.border-secondary {
+    border-color: var(--secondary);
+}
+
+.border-secondary\/30 {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.border-secondary\/40 {
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.border-secondary\/50 {
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.bg-secondary\/10 {
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.bg-secondary\/15 {
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.bg-tertiary {
+    background-color: var(--tertiary);
+}
+
+.text-tertiary {
+    color: var(--tertiary);
+}
+
+.border-tertiary {
+    border-color: var(--tertiary);
+}
+
+.border-tertiary\/30 {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.border-tertiary\/40 {
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.border-tertiary\/50 {
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.bg-tertiary\/10 {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.bg-tertiary\/30 {
+    background-color: rgba(99, 102, 241, 0.3);
+}
+
+.bg-neutral {
+    background-color: var(--neutral);
+}
+
+.bg-neutral\/80 {
+    background-color: rgba(11, 15, 23, 0.8);
+}
+
+.bg-neutral\/85 {
+    background-color: rgba(11, 15, 23, 0.85);
+}
+
+.bg-neutral\/95 {
+    background-color: rgba(11, 15, 23, 0.95);
+}
+
+.text-neutral {
+    color: var(--neutral);
+}
+
+.bg-neutral-darker\/60 {
+    background-color: rgba(7, 10, 16, 0.6);
+}
+
+.bg-neutral-card {
+    background-color: var(--neutral-card);
+}
+
+.bg-neutral-card\/80 {
+    background-color: rgba(17, 24, 39, 0.8);
+}
+
+.bg-neutral-card\/90 {
+    background-color: rgba(17, 24, 39, 0.9);
+}
+
+.bg-neutral-surface {
+    background-color: var(--neutral-surface);
+}
+
+.bg-neutral-surface\/60 {
+    background-color: rgba(15, 23, 42, 0.6);
+}
+
+.bg-neutral-surface\/90 {
+    background-color: rgba(15, 23, 42, 0.9);
+}
+
+.border-neutral-border {
+    border-color: var(--neutral-border);
+}
+
+.border-neutral-border\/50 {
+    border-color: rgba(30, 41, 59, 0.5);
+}
+
+.border-neutral-border\/60 {
+    border-color: rgba(30, 41, 59, 0.6);
+}
+
+.bg-neutral-input {
+    background-color: var(--neutral-input);
+}
+
+.text-neutral-textMuted {
+    color: var(--neutral-textMuted);
+}
+
+/* Neon Glow Shadows */
+.shadow-neon-cyan {
+    box-shadow: 0 0 20px -3px rgba(0, 240, 255, 0.35);
+}
+
+.shadow-neon-green {
+    box-shadow: 0 0 15px -2px rgba(16, 185, 129, 0.35);
+}
+
+.shadow-card-glow {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Hover States */
+.hover\:border-primary\/40:hover {
+    border-color: rgba(0, 240, 255, 0.4);
+}
+
+.hover\:border-primary\/50:hover {
+    border-color: rgba(0, 240, 255, 0.5);
+}
+
+.hover\:border-secondary\/40:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.hover\:border-secondary\/50:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.hover\:border-tertiary\/40:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.hover\:border-tertiary\/50:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.hover\:text-primary:hover {
+    color: var(--primary);
+}
+
+.hover\:text-secondary:hover {
+    color: var(--secondary);
+}
+
+.hover\:text-tertiary:hover {
+    color: var(--tertiary);
+}
+
+.hover\:bg-primary-hover:hover {
+    background-color: #3bf4ff;
+}
+
+.hover\:shadow-neon-cyan:hover {
+    box-shadow: 0 0 22px 2px rgba(0, 240, 255, 0.5);
+}
+
+/* Code Syntax Highlighting */
+.kw-purple {
+    color: #c084fc;
+}
+
+.var-cyan {
+    color: #00F0FF;
+}
+
+.str-green {
+    color: #34d399;
+}
+
+.type-blue {
+    color: #60a5fa;
+}
+
+.bool-orange {
+    color: #fb923c;
+}
+
+.comment-gray {
+    color: #64748b;
+}
+
+/* Pure CSS Animations */
+@keyframes pulseGlow {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Responsive Media Queries to Match Every Screen */
+@media (max-width: 640px) {
+    .hero-heading {
+        font-size: 2rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .contact-form-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .hero-heading {
+        font-size: 2.75rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .hero-heading {
+        font-size: 3.5rem !important;
+        line-height: 1.15 !important;
+    }
+}
+
+/* Pure CSS Burger Menu Drawer */
+.mobile-menu-drawer {
+    display: none;
+}
+
+#burger-menu-toggle:checked ~ .mobile-menu-drawer {
+    display: block;
+    animation: slideDownMenu 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#burger-menu-toggle:checked ~ div label .burger-open-icon {
+    display: none !important;
+}
+
+#burger-menu-toggle:checked ~ div label .burger-close-icon {
+    display: block !important;
+}
+
+@keyframes slideDownMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
