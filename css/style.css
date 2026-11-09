@@ -355,22 +355,9 @@ body {
     }
 }
 
-/* Pure CSS Burger Menu Drawer */
-.mobile-menu-drawer {
-    display: none;
-}
-
-#burger-menu-toggle:checked ~ .mobile-menu-drawer {
-    display: block;
+/* Mobile Menu Drawer Animation */
+#mobile-menu:not(.hidden) {
     animation: slideDownMenu 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-#burger-menu-toggle:checked ~ div label .burger-open-icon {
-    display: none !important;
-}
-
-#burger-menu-toggle:checked ~ div label .burger-close-icon {
-    display: block !important;
 }
 
 @keyframes slideDownMenu {
