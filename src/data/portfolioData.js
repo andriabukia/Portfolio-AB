@@ -11,11 +11,11 @@ export const portfolioData = {
   },
 
   navLinks: [
-    { id: "about", label: "ჩემ შესახებ", href: "#about" },
-    { id: "projects", label: "პროექტები", href: "#projects" },
-    { id: "skills", label: "უნარები", href: "#skills" },
-    { id: "employees", label: "თანამშრომლები", href: "#employees" },
-    { id: "contact", label: "კონტაქტი", href: "#contact" },
+    { id: "about", label: "ჩემ შესახებ", href: "#about", isRoute: false },
+    { id: "projects", label: "პროექტები", href: "#projects", isRoute: false },
+    { id: "skills", label: "უნარები", href: "#skills", isRoute: false },
+    { id: "employees", label: "თანამშრომლები", href: "/employees", isRoute: true },
+    { id: "contact", label: "კონტაქტი", href: "#contact", isRoute: false },
   ],
 
   stats: [
@@ -154,4 +154,3 @@ export const portfolioData = {
     },
   ],
 };
-

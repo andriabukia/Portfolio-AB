@@ -1,20 +1,34 @@
 import React, { useState } from 'react';
-import { Terminal, ArrowRight, Menu, X, Briefcase } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Terminal, ArrowRight, Menu, X } from 'lucide-react';
 import { portfolioData } from '../../data/portfolioData';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const { developer, navLinks } = portfolioData;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const isCurrentActive = (link) => {
+    if (link.isRoute) {
+      return location.pathname === link.href;
+    }
+    return location.pathname === '/' && link.id === 'about';
+  };
+
+  const getLinkHref = (link) => {
+    if (link.isRoute) return link.href;
+    return location.pathname === '/' ? link.href : `/${link.href}`;
+  };
+
   return (
-    <header class="sticky top-0 z-50 bg-neutral/95 backdrop-blur-md border-b border-neutral-border">
+    <header className="sticky top-0 z-50 bg-neutral/95 backdrop-blur-md border-b border-neutral-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo Section */}
-        <a href="#hero" className="flex items-center space-x-3 group">
+        <Link to="/" className="flex items-center space-x-3 group">
           <div className="w-10 h-10 rounded-xl bg-neutral-card border border-primary/40 flex items-center justify-center text-primary shadow-neon-cyan group-hover:border-primary transition duration-300">
             <Terminal className="w-5 h-5" />
           </div>
@@ -27,29 +41,44 @@ export const Header = () => {
               {developer.title}
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links (Centered Pills) */}
         <nav className="hidden md:flex items-center space-x-1.5 bg-neutral-card p-1.5 rounded-full border border-neutral-border shadow-inner">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`px-5 py-2 rounded-full text-xs font-medium transition duration-200 ${
-                link.id === 'about'
-                  ? 'bg-primary text-neutral font-semibold shadow-neon-cyan'
-                  : 'text-gray-300 hover:text-white hover:bg-neutral-surface'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const active = isCurrentActive(link);
+            const activeClass = active
+              ? 'bg-primary text-neutral font-semibold shadow-neon-cyan'
+              : 'text-gray-300 hover:text-white hover:bg-neutral-surface';
+
+            if (link.isRoute) {
+              return (
+                <Link
+                  key={link.id}
+                  to={link.href}
+                  className={`px-5 py-2 rounded-full text-xs font-medium transition duration-200 ${activeClass}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
+            return (
+              <a
+                key={link.id}
+                href={getLinkHref(link)}
+                className={`px-5 py-2 rounded-full text-xs font-medium transition duration-200 ${activeClass}`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Desktop Action & Avatar */}
         <div className="hidden md:flex items-center space-x-4">
           <a
-            href="#contact"
+            href={location.pathname === '/' ? '#contact' : '/#contact'}
             className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-primary text-neutral hover:bg-primary-hover hover:shadow-neon-cyan transition duration-300"
           >
             <span>დამიკავშირდით</span>
@@ -106,23 +135,46 @@ export const Header = () => {
 
           {/* Mobile Nav Links */}
           <nav className="flex flex-col space-y-2 font-medium text-sm">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                onClick={closeMenu}
-                className="px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-neutral-surface border border-neutral-border hover:border-primary/40 flex items-center justify-between transition"
-              >
-                <span>{link.label}</span>
-                <ArrowRight className="w-4 h-4 text-gray-500" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const active = isCurrentActive(link);
+              const linkClasses = `px-4 py-3 rounded-xl border flex items-center justify-between transition ${
+                active 
+                  ? 'bg-primary/10 border-primary text-primary font-semibold' 
+                  : 'text-gray-300 hover:text-white hover:bg-neutral-surface border-neutral-border hover:border-primary/40'
+              }`;
+
+              if (link.isRoute) {
+                return (
+                  <Link
+                    key={link.id}
+                    to={link.href}
+                    onClick={closeMenu}
+                    className={linkClasses}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowRight className="w-4 h-4 text-primary" />
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  key={link.id}
+                  href={getLinkHref(link)}
+                  onClick={closeMenu}
+                  className={linkClasses}
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight className="w-4 h-4 text-gray-500" />
+                </a>
+              );
+            })}
           </nav>
 
           {/* Mobile CTA Button */}
           <div className="pt-2">
             <a
-              href="#contact"
+              href={location.pathname === '/' ? '#contact' : '/#contact'}
               onClick={closeMenu}
               className="w-full inline-flex items-center justify-center space-x-2 py-3.5 px-5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary text-neutral hover:bg-primary-hover shadow-neon-cyan transition duration-200"
             >
@@ -137,4 +189,3 @@ export const Header = () => {
 };
 
 export default Header;
-

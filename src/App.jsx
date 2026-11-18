@@ -1,29 +1,25 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/sections/Header';
-import { Hero } from './components/sections/Hero';
-import { StatsSection } from './components/sections/StatsSection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
-import { SkillsSection } from './components/sections/SkillsSection';
-import { AboutSection } from './components/sections/AboutSection';
-import { EmployeesSection } from './components/sections/EmployeesSection';
-import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
+import { HomePage } from './pages/HomePage';
+import { EmployeesPage } from './pages/EmployeesPage';
 
 function App() {
   return (
-    <div className="bg-neutral ambient-glow min-h-screen text-gray-100 flex flex-col justify-between selection:bg-primary selection:text-neutral">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <StatsSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <AboutSection />
-        <EmployeesSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="bg-neutral ambient-glow min-h-screen text-gray-100 flex flex-col justify-between selection:bg-primary selection:text-neutral">
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/employees" element={<EmployeesPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
